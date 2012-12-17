@@ -17,6 +17,8 @@
 
 -export([lock/1, unlock/0]).
 
+-ifndef(WIN32).
+
 -on_load(init/0).
 
 init() ->
@@ -44,3 +46,13 @@ lock(_Flags) ->
 
 unlock() ->
     erlang:nif_error(mlockall_nif_not_loaded).
+
+-else.                                          % -ifndef(WIN32)
+
+lock(_Flags) ->
+    {error, enotsup}.
+
+unlock() ->
+    {error, enotsup}.
+
+-endif.
