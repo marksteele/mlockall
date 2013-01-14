@@ -17,7 +17,7 @@
 
 -export([lock/1, unlock/0]).
 
--ifndef(WIN32).
+-ifdef(HAVE_MLOCKALL).
 
 -on_load(init/0).
 
