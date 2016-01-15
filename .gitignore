@@ -2,3 +2,5 @@ ebin/
 priv/
 *.o
 *~
+*.d
+.rebar
